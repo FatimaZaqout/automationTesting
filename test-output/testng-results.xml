@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2025-10-22T11:24:15 EEST" name="Default suite" finished-at="2025-10-22T11:24:21 EEST" duration-ms="5503">
+    <groups>
+    </groups>
+    <test started-at="2025-10-22T11:24:15 EEST" name="Default test" finished-at="2025-10-22T11:24:21 EEST" duration-ms="5503">
+      <class name="tests.CatalogTests">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:tests.CatalogTests@1dde4cb2]" started-at="2025-10-22T11:24:15 EEST" name="setUp" finished-at="2025-10-22T11:24:19 EEST" duration-ms="3703" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="sortByNameAZ()[pri:0, instance:tests.CatalogTests@1dde4cb2]" started-at="2025-10-22T11:24:19 EEST" name="sortByNameAZ" description="WF2: Sort by Name A–Z and verify alphabetical order" finished-at="2025-10-22T11:24:21 EEST" duration-ms="1756" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- sortByNameAZ -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.CatalogTests@1dde4cb2]" started-at="2025-10-22T11:24:21 EEST" name="tearDown" finished-at="2025-10-22T11:24:21 EEST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- tests.CatalogTests -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

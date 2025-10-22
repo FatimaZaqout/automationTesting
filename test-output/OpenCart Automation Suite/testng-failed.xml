@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [OpenCart Automation Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Sanity(failed)">
+    <classes>
+      <class name="tests.CatalogTests">
+        <methods>
+          <include name="setUp"/>
+          <include name="sanityLoadsHome"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- tests.CatalogTests -->
+    </classes>
+  </test> <!-- Sanity(failed) -->
+</suite> <!-- Failed suite [OpenCart Automation Suite] -->

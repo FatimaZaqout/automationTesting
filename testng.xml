@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="nopCommerce Automation Suite">
+  <test name="All">
+    <classes>
+      <class name="tests.CatalogTests"/>
+      <class name="tests.CompareTests"/>
+      <class name="tests.SearchTests"/>
+      <class name="tests.CheckoutE2ETests"/>
+    </classes>
+  </test>
+</suite>
