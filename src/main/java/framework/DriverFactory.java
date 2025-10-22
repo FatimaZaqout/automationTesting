@@ -87,6 +87,7 @@ public class DriverFactory {
                     // if (!proxy.isEmpty()) { org.openqa.selenium.Proxy seleniumProxy = new org.openqa.selenium.Proxy(); seleniumProxy.setHttpProxy(proxy).setSslProxy(proxy); options.setProxy(seleniumProxy); }
 
                     tlDriver.set(new ChromeDriver(options));
+                    //FATIMA
                 }
             }
 
