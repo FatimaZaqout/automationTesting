@@ -67,15 +67,6 @@ You can override defaults at runtime using JVM system properties:
 | `implicitSeconds`   | Optional implicit wait (seconds)       | `0`                                       |
 | `pageLoadSeconds`   | Page load timeout (seconds)            | `30`                                      |
 
-**Examples:**
-```bash
-# Headless Chrome + custom baseUrl
-mvn -Dbrowser=chrome -Dheadless=true -DbaseUrl=https://demo.nopcommerce.com clean test
-
-
-> Notes: `allure-results/`, `allure-report/`, `screenshots/`, `pom.xml`, `testng.xml` are visible in the repository tree. :contentReference[oaicite:2]{index=2}
-
----
 
 ## ⚙️ Configuration
 
@@ -89,36 +80,7 @@ You can override defaults at runtime using JVM system properties:
 | `implicitSeconds`   | Optional implicit wait (seconds)       | `0`                                       |
 | `pageLoadSeconds`   | Page load timeout (seconds)            | `30`                                      |
 
-**Examples:**
-```bash
-# Headless Chrome + custom baseUrl
-mvn -Dbrowser=chrome -Dheadless=true -DbaseUrl=https://demo.nopcommerce.com clean test
 
-mvn clean test
-
-
-2) Using TestNG suite
-mvn -Dsurefire.suiteXmlFiles=testng.xml clean test
-
-3) Allure report (optional)
-
-allure serve allure-results
-
-
-Sample Scenarios
-Home Page
-Title & header presence
-Change currency to Euro and assert € renders on prices
-Top menu items exist (+ dropdowns on hover)
-Direct menu links change URL properly
-Search returns relevant results
-Category Page
-Sorting by name/price (ascending checks)
-Adding items to Compare with reliable toast handling
-Open Compare Products page from footer safely
-Compare Page
-Assert compare grid shows products
-Remove a single product column and verify remaining stay intact
 🧩 Design Notes
 POM-first: Each page exposes clear, reusable actions (e.g., goToCategory, addFirstNToCompare, openComparePageFromFooter).
 Stability: scrollIntoView + explicit waits before interactions; handle success notifications (appear/close/disappear) to avoid overlays.
