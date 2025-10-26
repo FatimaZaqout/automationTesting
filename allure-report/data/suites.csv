@@ -1,0 +1,7 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","1230","TC-003 Change currency to Euro","GroupedTests","Sun Oct 26 09:58:10 EEST 2025","passed","Sun Oct 26 09:58:11 EEST 2025","tests.HomeTests","MyGroupedTests","tests.HomeTests","verifyChangeCurrencyToEuro"
+"","1154","TC-006 Verify Search Box Functionality","GroupedTests","Sun Oct 26 09:58:29 EEST 2025","passed","Sun Oct 26 09:58:31 EEST 2025","tests.HomeTests","MyGroupedTests","tests.HomeTests","verifySearchBoxFunctionality"
+"","1544","TC-026 (Guest): Add third featured product to wishlist from Home Page","GroupedTests","Sun Oct 26 09:58:51 EEST 2025","passed","Sun Oct 26 09:58:52 EEST 2025","tests.WishlistTests","MyGroupedTests","tests.WishlistTests","addWishlistFromHome_AsGuest"
+"","14123","Successful login with valid credentials","GroupedTests","Sun Oct 26 09:58:34 EEST 2025","broken","Sun Oct 26 09:58:48 EEST 2025","tests.LoginTests","MyGroupedTests","tests.LoginTests","loginSuccessful"
+"","2457","TC-004 Verify first three main menu items show dropdowns on hover","GroupedTests","Sun Oct 26 09:58:24 EEST 2025","passed","Sun Oct 26 09:58:26 EEST 2025","tests.HomeTests","MyGroupedTests","tests.HomeTests","verifyLeftThreeDropdowns"
+"","5362","TC-005 Verify direct main menu links change URL on click","GroupedTests","Sun Oct 26 09:58:15 EEST 2025","passed","Sun Oct 26 09:58:20 EEST 2025","tests.HomeTests","MyGroupedTests","tests.HomeTests","verifyDirectMenuLinksOpen"

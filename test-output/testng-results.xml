@@ -1,25 +1,339 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="6" passed="2" failed="4" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-10-22T11:24:15 EEST" name="Default suite" finished-at="2025-10-22T11:24:21 EEST" duration-ms="5503">
+  <suite started-at="2025-10-26T23:28:47 EEST" name="Default suite" finished-at="2025-10-26T23:30:26 EEST" duration-ms="98977">
     <groups>
     </groups>
-    <test started-at="2025-10-22T11:24:15 EEST" name="Default test" finished-at="2025-10-22T11:24:21 EEST" duration-ms="5503">
-      <class name="tests.CatalogTests">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:tests.CatalogTests@1dde4cb2]" started-at="2025-10-22T11:24:15 EEST" name="setUp" finished-at="2025-10-22T11:24:19 EEST" duration-ms="3703" status="PASS">
+    <test started-at="2025-10-26T23:28:47 EEST" name="Default test" finished-at="2025-10-26T23:30:26 EEST" duration-ms="98977">
+      <class name="tests.RegistrationTest">
+        <test-method is-config="true" signature="BeforeMethod([Ljava.lang.Object;)[pri:0, instance:tests.RegistrationTest@795509d9]" started-at="2025-10-26T23:28:47 EEST" name="BeforeMethod" finished-at="2025-10-26T23:28:50 EEST" duration-ms="3369" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[Ljava.lang.Object;@11e9ac24]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- setUp -->
-        <test-method signature="sortByNameAZ()[pri:0, instance:tests.CatalogTests@1dde4cb2]" started-at="2025-10-22T11:24:19 EEST" name="sortByNameAZ" description="WF2: Sort by Name A–Z and verify alphabetical order" finished-at="2025-10-22T11:24:21 EEST" duration-ms="1756" status="PASS">
+        </test-method> <!-- BeforeMethod -->
+        <test-method signature="testSuccessfulRegistration()[pri:1, instance:tests.RegistrationTest@795509d9]" started-at="2025-10-26T23:28:50 EEST" name="testSuccessfulRegistration" description="TC-001: Verify successful registration with valid data" finished-at="2025-10-26T23:28:55 EEST" duration-ms="4857" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- sortByNameAZ -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.CatalogTests@1dde4cb2]" started-at="2025-10-22T11:24:21 EEST" name="tearDown" finished-at="2025-10-22T11:24:21 EEST" duration-ms="1" status="PASS">
+        </test-method> <!-- testSuccessfulRegistration -->
+        <test-method is-config="true" signature="AfterMethod(org.testng.ITestResult)[pri:0, instance:tests.RegistrationTest@795509d9]" started-at="2025-10-26T23:28:55 EEST" name="AfterMethod" finished-at="2025-10-26T23:28:56 EEST" duration-ms="847" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testSuccessfulRegistration status=SUCCESS method=RegistrationTest.testSuccessfulRegistration()[pri:1, instance:tests.RegistrationTest@795509d9] output={null}]]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- tearDown -->
-      </class> <!-- tests.CatalogTests -->
+        </test-method> <!-- AfterMethod -->
+        <test-method is-config="true" signature="BeforeMethod([Ljava.lang.Object;)[pri:0, instance:tests.RegistrationTest@795509d9]" started-at="2025-10-26T23:28:56 EEST" name="BeforeMethod" finished-at="2025-10-26T23:28:59 EEST" duration-ms="3164" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[Ljava.lang.Object;@74f280bd]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- BeforeMethod -->
+        <test-method signature="testRegistrationWithEmptyFields()[pri:2, instance:tests.RegistrationTest@795509d9]" started-at="2025-10-26T23:28:59 EEST" name="testRegistrationWithEmptyFields" description="TC-002: Verify registration fails with empty required fields" finished-at="2025-10-26T23:29:12 EEST" duration-ms="12901" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[First name error should be displayed expected [false] but found [true]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: First name error should be displayed expected [false] but found [true]
+at org.testng.Assert.fail(Assert.java:111)
+at org.testng.Assert.failNotEquals(Assert.java:1590)
+at org.testng.Assert.assertFalse(Assert.java:79)
+at tests.RegistrationTest.testRegistrationWithEmptyFields(RegistrationTest.java:101)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:687)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:995)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+at org.testng.TestRunner.privateRun(TestRunner.java:741)
+at org.testng.TestRunner.run(TestRunner.java:616)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testRegistrationWithEmptyFields -->
+        <test-method is-config="true" signature="AfterMethod(org.testng.ITestResult)[pri:0, instance:tests.RegistrationTest@795509d9]" started-at="2025-10-26T23:29:12 EEST" name="AfterMethod" finished-at="2025-10-26T23:29:13 EEST" duration-ms="307" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testRegistrationWithEmptyFields status=FAILURE method=RegistrationTest.testRegistrationWithEmptyFields()[pri:2, instance:tests.RegistrationTest@795509d9] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- AfterMethod -->
+        <test-method is-config="true" signature="BeforeMethod([Ljava.lang.Object;)[pri:0, instance:tests.RegistrationTest@795509d9]" started-at="2025-10-26T23:29:13 EEST" name="BeforeMethod" finished-at="2025-10-26T23:29:17 EEST" duration-ms="4211" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[Ljava.lang.Object;@7aa01bd9]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- BeforeMethod -->
+        <test-method signature="testRegistrationWithInvalidEmail(java.lang.String)[pri:3, instance:tests.RegistrationTest@795509d9]" started-at="2025-10-26T23:29:17 EEST" name="testRegistrationWithInvalidEmail" description="TC-003: Verify registration fails with invalid email" data-provider="invalidEmails" finished-at="2025-10-26T23:29:43 EEST" duration-ms="25809" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[test@]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[Email validation error should be displayed for: test@ expected [true] but found [false]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: Email validation error should be displayed for: test@ expected [true] but found [false]
+at org.testng.Assert.fail(Assert.java:111)
+at org.testng.Assert.failNotEquals(Assert.java:1590)
+at org.testng.Assert.assertTrue(Assert.java:57)
+at tests.RegistrationTest.testRegistrationWithInvalidEmail(RegistrationTest.java:135)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:687)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:995)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+at org.testng.TestRunner.privateRun(TestRunner.java:741)
+at org.testng.TestRunner.run(TestRunner.java:616)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testRegistrationWithInvalidEmail -->
+        <test-method is-config="true" signature="AfterMethod(org.testng.ITestResult)[pri:0, instance:tests.RegistrationTest@795509d9]" started-at="2025-10-26T23:29:43 EEST" name="AfterMethod" finished-at="2025-10-26T23:29:43 EEST" duration-ms="380" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testRegistrationWithInvalidEmail status=FAILURE method=RegistrationTest.testRegistrationWithInvalidEmail(java.lang.String)[pri:3, instance:tests.RegistrationTest@795509d9] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- AfterMethod -->
+        <test-method is-config="true" signature="BeforeMethod([Ljava.lang.Object;)[pri:0, instance:tests.RegistrationTest@795509d9]" started-at="2025-10-26T23:29:43 EEST" name="BeforeMethod" finished-at="2025-10-26T23:29:46 EEST" duration-ms="2905" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[Ljava.lang.Object;@7e61e25c]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- BeforeMethod -->
+        <test-method signature="testRegistrationWithWeakPassword(java.lang.String)[pri:4, instance:tests.RegistrationTest@795509d9]" started-at="2025-10-26T23:29:46 EEST" name="testRegistrationWithWeakPassword" description="TC-004: Verify registration fails with weak password" data-provider="weakPasswords" finished-at="2025-10-26T23:30:00 EEST" duration-ms="13933" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[123456]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[Password validation error should be displayed for: 123456 expected [false] but found [true]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: Password validation error should be displayed for: 123456 expected [false] but found [true]
+at org.testng.Assert.fail(Assert.java:111)
+at org.testng.Assert.failNotEquals(Assert.java:1590)
+at org.testng.Assert.assertFalse(Assert.java:79)
+at tests.RegistrationTest.testRegistrationWithWeakPassword(RegistrationTest.java:164)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:687)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:995)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+at org.testng.TestRunner.privateRun(TestRunner.java:741)
+at org.testng.TestRunner.run(TestRunner.java:616)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testRegistrationWithWeakPassword -->
+        <test-method is-config="true" signature="AfterMethod(org.testng.ITestResult)[pri:0, instance:tests.RegistrationTest@795509d9]" started-at="2025-10-26T23:30:00 EEST" name="AfterMethod" finished-at="2025-10-26T23:30:00 EEST" duration-ms="331" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testRegistrationWithWeakPassword status=FAILURE method=RegistrationTest.testRegistrationWithWeakPassword(java.lang.String)[pri:4, instance:tests.RegistrationTest@795509d9] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- AfterMethod -->
+        <test-method is-config="true" signature="BeforeMethod([Ljava.lang.Object;)[pri:0, instance:tests.RegistrationTest@795509d9]" started-at="2025-10-26T23:30:00 EEST" name="BeforeMethod" finished-at="2025-10-26T23:30:04 EEST" duration-ms="3883" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[Ljava.lang.Object;@8641b7d]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- BeforeMethod -->
+        <test-method signature="testRegistrationWithMismatchedPasswords()[pri:5, instance:tests.RegistrationTest@795509d9]" started-at="2025-10-26T23:30:04 EEST" name="testRegistrationWithMismatchedPasswords" description="TC-005: Verify registration fails with mismatched passwords" finished-at="2025-10-26T23:30:18 EEST" duration-ms="13708" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[Confirm password error should be displayed expected [false] but found [true]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: Confirm password error should be displayed expected [false] but found [true]
+at org.testng.Assert.fail(Assert.java:111)
+at org.testng.Assert.failNotEquals(Assert.java:1590)
+at org.testng.Assert.assertFalse(Assert.java:79)
+at tests.RegistrationTest.testRegistrationWithMismatchedPasswords(RegistrationTest.java:191)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:687)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:995)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+at org.testng.TestRunner.privateRun(TestRunner.java:741)
+at org.testng.TestRunner.run(TestRunner.java:616)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testRegistrationWithMismatchedPasswords -->
+        <test-method is-config="true" signature="AfterMethod(org.testng.ITestResult)[pri:0, instance:tests.RegistrationTest@795509d9]" started-at="2025-10-26T23:30:18 EEST" name="AfterMethod" finished-at="2025-10-26T23:30:18 EEST" duration-ms="333" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testRegistrationWithMismatchedPasswords status=FAILURE method=RegistrationTest.testRegistrationWithMismatchedPasswords()[pri:5, instance:tests.RegistrationTest@795509d9] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- AfterMethod -->
+        <test-method is-config="true" signature="BeforeMethod([Ljava.lang.Object;)[pri:0, instance:tests.RegistrationTest@795509d9]" started-at="2025-10-26T23:30:18 EEST" name="BeforeMethod" finished-at="2025-10-26T23:30:21 EEST" duration-ms="2470" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[Ljava.lang.Object;@37c7766e]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- BeforeMethod -->
+        <test-method signature="testRegistrationWithExistingEmail()[pri:6, instance:tests.RegistrationTest@795509d9]" started-at="2025-10-26T23:30:21 EEST" name="testRegistrationWithExistingEmail" description="TC-006: Verify registration fails with already registered email" finished-at="2025-10-26T23:30:26 EEST" duration-ms="5139" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testRegistrationWithExistingEmail -->
+        <test-method is-config="true" signature="AfterMethod(org.testng.ITestResult)[pri:0, instance:tests.RegistrationTest@795509d9]" started-at="2025-10-26T23:30:26 EEST" name="AfterMethod" finished-at="2025-10-26T23:30:26 EEST" duration-ms="325" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testRegistrationWithExistingEmail status=SUCCESS method=RegistrationTest.testRegistrationWithExistingEmail()[pri:6, instance:tests.RegistrationTest@795509d9] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- AfterMethod -->
+      </class> <!-- tests.RegistrationTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

@@ -15,11 +15,6 @@ import java.time.Duration;
 import java.util.Objects;
 import java.util.Properties;
 
-/**
- * DriverFactory: centralizes WebDriver creation.
- * Supports: chrome (default), firefox, edge, safari.
- * Note: Safari remote automation requires enabling 'Allow Remote Automation' in Safari (macOS).
- */
 public class DriverFactory {
 
     private static final ThreadLocal<WebDriver> tlDriver = new ThreadLocal<>();
@@ -59,9 +54,7 @@ public class DriverFactory {
                     break;
                 }
                 case "safari": {
-                    // SafariDriver is provided by macOS; WebDriverManager is not used for Safari.
                     SafariOptions sf = new SafariOptions();
-                    // Safari headless is not supported currently; ignore headless flag.
                     tlDriver.set(new SafariDriver(sf));
                     break;
                 }
@@ -113,7 +106,6 @@ public class DriverFactory {
         }
     }
 
-    // Helper: pick a random-ish user agent from a short list
     private static String randomUserAgent() {
         String[] agents = new String[]{
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
