@@ -1,71 +1,131 @@
-# 🧪 NopCommerce Automation Testing Project
+# 🧪 NopCommerce UI Automation — Selenium + TestNG (POM)
 
-This project represents a complete **UI Automation Testing Framework** built for the e-commerce demo website  
-🔗 https://demo.nopcommerce.com  
+Automated UI testing framework for the nopCommerce demo store:  
+https://demo.nopcommerce.com
 
-The project applies **Selenium WebDriver + TestNG + Page Object Model (POM)** design pattern to ensure:
-- Readability
-- Reusability
-- Maintainability
-- Scalability for future test scenarios
+This project applies **Page Object Model (POM)** with **Selenium WebDriver** and **TestNG**, plus optional **Allure** reporting and local **screenshots** on every test phase.
 
 ---
 
-## 🚀 Key Features
-| Feature | Description |
-|--------|-------------|
-| **Page Object Model** | Every web page has a dedicated class containing its locators & actions |
-| **TestNG** | Handles test execution flow, assertions, and reporting |
-| **Explicit Waits** | Ensures reliable synchronization, reducing flaky test behavior |
-| **Reusable Utilities** | `DriverFactory`, `BaseTest`, and `Waits` provide core testing functionality |
-| **Allure Reporting (Optional)** | Attaches screenshots & logs for failed test analysis |
-| **Clean Architecture** | Clear separation between test logic and UI interaction logic |
+## ✅ Why this project
+
+- **Stable & Maintainable**: Clean POM layers (`pages/`, `framework/`, `tests/`) to keep test logic separate from UI locators/actions.
+- **Deterministic waits**: Explicit waits + utilities to reduce flaky behavior (scroll into view, toast handling).
+- **Actionable reporting**: Allure attachments + saved screenshots to diagnose failures quickly.
+
+> Repo highlights visible in GitHub: `src/`, `pom.xml`, `testng.xml`, `allure-results/`, `allure-report/`, `screenshots/`.  
+> (See repo tree on the `main` branch.)  
+> _Refs_: folders listed on the repository landing page.  
+> 
+> - `allure-report/`, `allure-results/` present in the tree.  
+> - `screenshots/` is also present.  
+> - `pom.xml`, `testng.xml` are at the repo root. :contentReference[oaicite:1]{index=1}
+
+---
+
+## 🧱 Tech Stack
+
+- **Language**: Java (Test code)  
+- **Automation**: Selenium WebDriver  
+- **Runner**: TestNG  
+- **Build**: Maven  
+- **Reports**: Allure (optional)  
+- **Artifacts**: Local screenshots per test (before/after)
 
 ---
 
 ## 📂 Project Structure
 
 automationTesting/
-├── src/test/java/
-│ ├── framework/ # Driver setup, BaseTest, Wait helpers
-│ ├── pages/ # POM classes (HomePage, CategoryPage, ComparePage ...)
-│ ├── tests/ # Test classes grouped by functionality
-│
-└── resources/
-└── testng.xml # Test execution configuration
+├─ src/
+│ └─ test/
+│ ├─ java/
+│ │ ├─ framework/ # DriverFactory, BaseTest, Waits...
+│ │ ├─ pages/ # Page Objects (HomePage, CategoryPage, ComparePage, ...)
+│ │ └─ tests/ # Test classes
+│ └─ resources/
+├─ screenshots/ # Saved PNGs captured before/after tests
+├─ allure-results/ # Raw Allure results
+├─ allure-report/ # Generated Allure report (static)
+├─ pom.xml # Maven config
+└─ testng.xml # Test suite config
 
 
-## 📝 Covered Test Scenarios (Samples)
-
-| Test Case | Description | Status |
-|----------|-------------|--------|
-| Change Currency | Verify switching to Euro updates prices | ✅ |
-| Search Functionality | Search returns relevant products | ✅ |
-| Add to Wishlist | Add a product to wishlist and verify it appears | ✅ |
-| Compare Products | Add multiple products, open compare page, assert UI grid | ✅ |
-| Remove from Compare | Ensure removing a product updates the grid correctly | ✅ |
+> Notes: `allure-results/`, `allure-report/`, `screenshots/`, `pom.xml`, `testng.xml` are visible in the repository tree. :contentReference[oaicite:2]{index=2}
 
 ---
 
-## 🧱 Technologies Used
-- **Java +**
-- **Selenium WebDriver**
-- **TestNG**
-- **Maven**
-- **Allure Reports** **
+## ⚙️ Configuration
 
----
+You can override defaults at runtime using JVM system properties:
 
-## ▶️ How to Run Tests
+| Property            | Purpose                               | Default                                   |
+|---------------------|----------------------------------------|-------------------------------------------|
+| `baseUrl`           | AUT base URL                           | `https://demo.nopcommerce.com/`           |
+| `browser`           | `chrome` / `firefox` / `edge` / `safari` | `chrome`                                  |
+| `headless`          | Run headless                           | `false`                                   |
+| `implicitSeconds`   | Optional implicit wait (seconds)       | `0`                                       |
+| `pageLoadSeconds`   | Page load timeout (seconds)            | `30`                                      |
 
-Using Maven:
+**Examples:**
 ```bash
+# Headless Chrome + custom baseUrl
+mvn -Dbrowser=chrome -Dheadless=true -DbaseUrl=https://demo.nopcommerce.com clean test
+
+
+> Notes: `allure-results/`, `allure-report/`, `screenshots/`, `pom.xml`, `testng.xml` are visible in the repository tree. :contentReference[oaicite:2]{index=2}
+
+---
+
+## ⚙️ Configuration
+
+You can override defaults at runtime using JVM system properties:
+
+| Property            | Purpose                               | Default                                   |
+|---------------------|----------------------------------------|-------------------------------------------|
+| `baseUrl`           | AUT base URL                           | `https://demo.nopcommerce.com/`           |
+| `browser`           | `chrome` / `firefox` / `edge` / `safari` | `chrome`                                  |
+| `headless`          | Run headless                           | `false`                                   |
+| `implicitSeconds`   | Optional implicit wait (seconds)       | `0`                                       |
+| `pageLoadSeconds`   | Page load timeout (seconds)            | `30`                                      |
+
+**Examples:**
+```bash
+# Headless Chrome + custom baseUrl
+mvn -Dbrowser=chrome -Dheadless=true -DbaseUrl=https://demo.nopcommerce.com clean test
+
 mvn clean test
 
-With Allure Report:
 
-mvn clean test
+2) Using TestNG suite
+mvn -Dsurefire.suiteXmlFiles=testng.xml clean test
+
+3) Allure report (optional)
+
 allure serve allure-results
 
 
+Sample Scenarios
+Home Page
+Title & header presence
+Change currency to Euro and assert € renders on prices
+Top menu items exist (+ dropdowns on hover)
+Direct menu links change URL properly
+Search returns relevant results
+Category Page
+Sorting by name/price (ascending checks)
+Adding items to Compare with reliable toast handling
+Open Compare Products page from footer safely
+Compare Page
+Assert compare grid shows products
+Remove a single product column and verify remaining stay intact
+🧩 Design Notes
+POM-first: Each page exposes clear, reusable actions (e.g., goToCategory, addFirstNToCompare, openComparePageFromFooter).
+Stability: scrollIntoView + explicit waits before interactions; handle success notifications (appear/close/disappear) to avoid overlays.
+Diagnostics: Before/After screenshots + Allure text/image attachments on failures.
+Parallel-friendly: WebDriver managed via DriverFactory with per-test lifecycle in BaseTest.
 
+Author
+Eman Naji - QA / Test Automation
+Fatima Zaqout — QA / Test Automation
+Sohaib Al Shawwa - QA / Test Automation
