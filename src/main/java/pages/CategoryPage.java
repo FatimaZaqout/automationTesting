@@ -1,65 +1,120 @@
 package pages;
 
 import org.openqa.selenium.*;
-import java.util.*;
+import org.openqa.selenium.support.ui.*;
+
+import java.math.BigDecimal;
+import java.time.Duration;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class CategoryPage extends BasePage {
-    private final By heading = By.cssSelector("div.page-title h1");
-    private final By sortSelect = By.id("products-orderby");
-    private final By productTile = By.cssSelector(".product-item");
-    private final By productTitleLink = By.cssSelector(".product-title a");
-    private final By addToCartBtnInTile = By.cssSelector("button.product-box-add-to-cart-button");
-    private final By addToCompareLink = By.cssSelector("button.add-to-compare-list-button, a.add-to-compare-list-button");
-    private final By barSuccess = By.cssSelector("div.bar-notification.success");
+    private  By sortDropdown       = By.id("products-orderby");
+    private  By productCards       = By.cssSelector(".product-item");
+    private  By productTitleInCard = By.cssSelector(".product-title a");
+    private  By priceInCard        = By.cssSelector(".prices .actual-price, span.price");
 
+    // Compare
+    private  By compareBtn         = By.cssSelector("a.add-to-compare-list-button, .add-to-compare-list-button");
+    private  By successBar         = By.cssSelector("div.bar-notification.success");
+    private  By successBarClose    = By.cssSelector("div.bar-notification.success span.close");
+    private  By footerCompareLink  = By.cssSelector("a[href='/compareproducts']");
+
+    private WebDriverWait w10() { return new WebDriverWait(driver, Duration.ofSeconds(10)); }
     public CategoryPage(WebDriver driver) { super(driver); }
 
-    public String header() {
-        return waits.visible(heading).getText().trim();
-    }
-
+    /* ---------- Sorting ---------- */
     public CategoryPage sortBy(String visibleText) {
-        waits.selectByVisibleText(sortSelect, visibleText);
-        // small wait for products to refresh
-        waits.visible(productTile);
+        WebElement first = driver.findElements(productCards).stream().findFirst().orElse(null);
+
+        new Select(waits.visible(sortDropdown)).selectByVisibleText(visibleText);
+        w10().until(d -> new Select(d.findElement(sortDropdown))
+                .getFirstSelectedOption().getText().trim().equals(visibleText.trim()));
+
+        if (first != null) {
+            try { w10().until(ExpectedConditions.stalenessOf(first)); } catch (Exception ignored) {}
+        }
+        waits.visible(productCards);
         return this;
     }
 
-    public List<Double> visiblePrices() {
-        List<WebElement> tiles = driver.findElements(productTile);
-        return tiles.stream()
-                .map(t -> t.findElement(By.cssSelector(".prices .price, .prices .actual-price")).getText())
-                .map(CategoryPage::parsePrice)
+    /* ---------- Read names & prices ---------- */
+    public List<String> names() {
+        return driver.findElements(productCards).stream()
+                .map(card -> card.findElements(productTitleInCard))
+                .filter(list -> !list.isEmpty())
+                .map(list -> list.get(0).getText().trim())
+                .filter(s -> !s.isEmpty())
                 .collect(Collectors.toList());
     }
 
-    private static Double parsePrice(String raw) {
-        // strips currency and commas e.g. "$1,200.00"
-        return Double.valueOf(raw.replaceAll("[^0-9.]", ""));
+    public List<BigDecimal> prices() {
+        return driver.findElements(productCards).stream()
+                .map(card -> card.findElements(priceInCard))
+                .filter(list -> !list.isEmpty())
+                .map(list -> parsePrice(list.get(0).getText()))
+                .filter(v -> v != null)
+                .collect(Collectors.toList());
     }
 
-    public ProductPage openProductByName(String name) {
-        waits.click(By.xpath("//h2[@class='product-title']/a[normalize-space()='" + name + "']"));
-        return new ProductPage(driver);
+    public boolean namesAscending() {
+        List<String> n = names();
+        for (int i = 0; i + 1 < n.size(); i++)
+            if (n.get(i).compareToIgnoreCase(n.get(i + 1)) > 0) return false;
+        return true;
     }
 
-    public CategoryPage addToCompare(String name) {
-        WebElement tile = driver.findElement(By.xpath("//h2[@class='product-title']/a[normalize-space()='" + name + "']/ancestor::*[@class='product-item']"));
-        tile.findElement(addToCompareLink).click();
-        waits.visible(barSuccess);
+    public boolean pricesAscending() {
+        List<BigDecimal> v = prices();
+        for (int i = 0; i + 1 < v.size(); i++)
+            if (v.get(i).compareTo(v.get(i + 1)) > 0) return false;
+        return true;
+    }
+
+    public boolean hasAtLeast(int n) { return driver.findElements(productCards).size() >= n; }
+
+    /* ---------- Compare actions ---------- */
+    public CategoryPage addToCompareByIndex(int index) {
+        List<WebElement> items = driver.findElements(productCards);
+        if (index < 0 || index >= items.size()) throw new IllegalArgumentException("Bad index: " + index);
+
+        WebElement tile = items.get(index);
+        waits.scrollIntoView(tile);
+        tile.findElement(compareBtn).click();
+        waitSuccessBarCycle();
         return this;
     }
 
-    public ComparePage openCompareFromBar() {
-        waits.click(By.linkText("product comparison"));
-        return new ComparePage(driver);
+    public CategoryPage addFirstNToCompare(int n) {
+        if (!hasAtLeast(n)) throw new IllegalStateException("Not enough products");
+        for (int i = 0; i < n; i++) addToCompareByIndex(i);
+        return this;
     }
 
-    public CategoryPage addToCartFromTile(String name) {
-        WebElement tile = driver.findElement(By.xpath("//h2[@class='product-title']/a[normalize-space()='" + name + "']/ancestor::*[@class='product-item']"));
-        tile.findElement(addToCartBtnInTile).click();
-        waits.visible(barSuccess);
-        return this;
+    public pages.ComparePage openComparePageFromFooter() {
+        try { waits.invisible(successBar); } catch (Exception ignored) {}
+        waits.scrollIntoView(waits.visible(footerCompareLink));
+        waits.click(footerCompareLink);
+        return new pages.ComparePage(driver);
+    }
+
+    /* ---------- Helpers ---------- */
+    private void waitSuccessBarCycle() {
+        waits.visible(successBar);
+        try { driver.findElement(successBarClose).click(); } catch (Exception ignored) {}
+        waits.invisible(successBar);
+    }
+
+    private BigDecimal parsePrice(String raw) {
+        if (raw == null) return null;
+        String s = raw.replaceAll("[^\\d,\\.]", "").trim();
+        if (s.contains(",") && s.contains(".")) {
+            if (s.lastIndexOf(',') > s.lastIndexOf('.')) { s = s.replace(".", "").replace(",", "."); }
+            else { s = s.replace(",", ""); }
+        } else {
+            s = s.replace(",", "");
+        }
+        if (s.isEmpty()) return null;
+        try { return new BigDecimal(s); } catch (Exception e) { return null; }
     }
 }
