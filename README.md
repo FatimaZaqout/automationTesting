@@ -81,7 +81,8 @@ You can override defaults at runtime using JVM system properties:
 | `pageLoadSeconds`   | Page load timeout (seconds)            | `30`                                      |
 
 
-🧩 Design Notes
+## 🧩 Design Notes 
+
 POM-first: Each page exposes clear, reusable actions (e.g., goToCategory, addFirstNToCompare, openComparePageFromFooter).
 Stability: scrollIntoView + explicit waits before interactions; handle success notifications (appear/close/disappear) to avoid overlays.
 Diagnostics: Before/After screenshots + Allure text/image attachments on failures.
